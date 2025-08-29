@@ -22,7 +22,7 @@ function Layout({ children }) {
           <h3>Connect</h3>
           <ul className="social-links">
             <li><a className="sidebar-btn" href="https://www.linkedin.com/in/samarthkhanna2741/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-            <li><a className="sidebar-btn" href="https://www.x.com/samarth2741" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a className="sidebar-btn" href="https://www.x.com/samarth2741" target="_blank" rel="noopener noreferrer">X</a></li>
           </ul>
         </aside>
         <main className="main-content fade-in">
