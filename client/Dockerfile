@@ -13,7 +13,7 @@ RUN npm ci
 COPY . .
 
 # Build the React App (generates static files in /build)
-RUN npm rum build
+RUN npm run build
 
 # Stage-2: Serve with Nginx
 FROM nginx:alpine
