@@ -12,6 +12,9 @@ RUN npm install
 # Now copy rest of the source code
 COPY . .
 
+ARG REACT_APP_API
+ENV REACT_APP_API=$REACT_APP_API
+
 # Build the React App (generates static files in /build)
 RUN npm run build
 
@@ -22,7 +25,7 @@ FROM nginx:alpine
 COPY --from=builder /app/build /usr/share/nginx/html
 
 # Add custom Nginx config (optional but usually required for SPA)
-COPY nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY default.conf /etc/nginx/conf.d/default.conf
 
 # Expose port 80 for HTTP
 EXPOSE 80
