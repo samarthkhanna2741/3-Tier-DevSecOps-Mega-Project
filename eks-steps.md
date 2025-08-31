@@ -4,7 +4,7 @@
 This guide installs and configures the AWS CLI, Terraform, kubectl, eksctl, and sets up EKS with EBS CSI, NGINX Ingress, and cert-manager.
 
 
-## 📦 Install AWS CLI
+## Install AWS CLI
 
 ```bash
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -14,7 +14,7 @@ sudo ./aws/install
 aws configure
 ```
 
-## 🌍 Install Terraform
+## Install Terraform
 
 ```bash
 sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl
@@ -30,14 +30,14 @@ terraform -version
 ```
 
 
-## ☸️ Configure kubeconfig for EKS
+## Configure kubeconfig for EKS
 
 ```bash
 aws eks --region ap-south-1 update-kubeconfig --name samarthkhanna-cluster
 ```
 
 
-## 🧰 Install kubectl
+## Install kubectl
 
 ```bash
 curl -LO "https://dl.k8s.io/release/$(curl -sL https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -48,7 +48,7 @@ kubectl version --client
 ```
 
 
-## ⚙️ Install eksctl
+## Install eksctl
 
 ```bash
 curl -sLO "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz"
@@ -58,7 +58,7 @@ eksctl version
 ```
 
 
-## 🔐 Associate IAM OIDC Provider with EKS
+## Associate IAM OIDC Provider with EKS
 
 ```bash
 eksctl utils associate-iam-oidc-provider \
@@ -67,7 +67,7 @@ eksctl utils associate-iam-oidc-provider \
   --approve
 ```
 
-## 🛡️ Create IAM Service Account for EBS CSI Driver
+## Create IAM Service Account for EBS CSI Driver
 
 ```bash
 eksctl create iamserviceaccount \
@@ -80,21 +80,21 @@ eksctl create iamserviceaccount \
   --override-existing-serviceaccounts
 ```
 
-## 📦 Deploy Add-ons
+## Deploy Add-ons
 
-### ✅ EBS CSI Driver
+### EBS CSI Driver
 
 ```bash
 kubectl apply -k "github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/ecr/?ref=release-1.11"
 ```
 
-### 🌐 NGINX Ingress Controller
+### NGINX Ingress Controller
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
 ```
 
-### 🔒 cert-manager
+### cert-manager
 
 ```bash
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.12.0/cert-manager.yaml
