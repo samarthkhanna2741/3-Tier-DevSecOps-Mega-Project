@@ -33,7 +33,7 @@ terraform -version
 ## ☸️ Configure kubeconfig for EKS
 
 ```bash
-aws eks --region ap-south-1 update-kubeconfig --name devopsshack-cluster
+aws eks --region ap-south-1 update-kubeconfig --name samarthkhanna-cluster
 ```
 
 
@@ -63,7 +63,7 @@ eksctl version
 ```bash
 eksctl utils associate-iam-oidc-provider \
   --region ap-south-1 \
-  --cluster devopsshack-cluster \
+  --cluster samarthkhanna2741-cluster \
   --approve
 ```
 
@@ -74,7 +74,7 @@ eksctl create iamserviceaccount \
   --region ap-south-1 \
   --name ebs-csi-controller-sa \
   --namespace kube-system \
-  --cluster devopsshack-cluster \
+  --cluster samarthkhanna2741-cluster \
   --attach-policy-arn arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy \
   --approve \
   --override-existing-serviceaccounts
@@ -99,4 +99,3 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main
 ```bash
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.12.0/cert-manager.yaml
 ```
-
