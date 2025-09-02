@@ -116,14 +116,6 @@ pipeline {
             }
         }
         
-        stage('Docker Deploy via Compose') {
-            steps {
-                script{
-                    sh 'docker-compose up -d'
-                }
-            }
-        }
-        
 
     }
 }
